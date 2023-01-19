@@ -23,11 +23,23 @@ bool Hotel::removeRoom(Chambre room) {
 	return find (_rooms.begin(), _rooms.end(), room) != _rooms.end();
 }
 
-std::string Hotel::displayRooms(bool show) {
+std::string displayRooms(const Hotel &h,bool show) {
     std::string ret;
-    for (int i = 0; i < _rooms.size(); ++i) {
-        ret += std::to_string(i) + " : \n" + to_string(_rooms.at(i)) + "\n";
+    for (int i = 0; i < h.getRooms().size(); ++i) {
+        ret += std::to_string(i) + " : \n" + to_string(h.getRooms().at(i)) + "\n";
     }
     if (show) std::cout << ret << std::endl;
     return ret;
 }
+
+std::string to_string(const Hotel &h){
+	return "ID : " + h.getId() + "\n" +
+	       "Name : " + h.getName() + "\n" +
+	       "City : " + h.getCity() + "\n"
+	       "Rooms : " + displayRooms(h,false);
+}
+
+std::ostream &operator<<(std::ostream &os, const Hotel &hotel){
+	os << to_string(hotel) << std::endl;
+    return os;
+};

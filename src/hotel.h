@@ -11,6 +11,7 @@ private:
 	std::string _name;
 	std::string _city;
 	std::vector<Chambre> _rooms;
+
 public:
 	Hotel(std::string id, std::string name = {}, std::string city = {}, std::vector<Chambre> rooms = {});
 
@@ -27,9 +28,9 @@ public:
 	bool addRoom(Chambre room);
 	bool removeRoom(Chambre room);
 
-	std::string displayRooms(bool show = true);
 };
 
+std::string displayRooms(bool show = true);
 bool isHotelValid(std::string id);
 bool isHotelValid(const Hotel& h);
 

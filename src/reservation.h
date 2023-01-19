@@ -12,21 +12,24 @@ private:
 	std::string _idClient;
 	int _nbNight;
 	float _priceTotal;
+	float _pricePerNight;
 public:
-	Reservation(Date dateBegin, std::string idHotel, std::string idRoom, std::string idClient,int nbNight =1, float priceTotal = 0);
+	Reservation(Date dateBegin, std::string idHotel, std::string idRoom, std::string idClient,int nbNight = 1, float pricePerNight = 0);
 
 	const Date &getDateBegin() const;
 	std::string getIdHotel() const;
 	std::string getIdRoom() const;
 	std::string getIdClient() const;
 	int getNbNight() const;
+	float getPricePerNight() const;
 	float getPriceTotal() const;
 
 	void setDateBegin(const Date& dateBegin);
 	void setIdHotel(const std::string idHotel);
-	void setIdName(const std::string idName);
+	void setIdRoom(const std::string idRoom);
 	void setIdClient(const std::string idClient);
 	void setNbNight(const int nbNight);
+	void setPricePerNight(const float pricePerNight);
 	void setPriceTotal(const float priceTotal);
 };
 
