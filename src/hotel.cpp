@@ -7,6 +7,15 @@ std::string Hotel::getId() const {return _id;};
 std::string Hotel::getName() const {return _name;};
 std::string Hotel::getCity() const {return _city;};
 std::vector<Chambre> Hotel::getRooms() const {return _rooms;};
+std::vector<Chambre> Hotel::getRooms(const Type &type) const {
+	std::vector<Chambre> roomsAvailable;
+	std::copy_if(_rooms.begin(),_rooms.end(), 
+		std::back_inserter(roomsAvailable), 
+		[type](Chambre x) {return x.getType() == type;});
+	return roomsAvailable;
+};
+
+
 
 void Hotel::setId(std::string id) {_id = std::move(id);};
 void Hotel::setName(std::string name) {_name = std::move(name);};
@@ -22,6 +31,8 @@ bool Hotel::removeRoom(Chambre room) {
 	if (it != _rooms.end()) _rooms.erase(it);
 	return find (_rooms.begin(), _rooms.end(), room) != _rooms.end();
 }
+
+
 
 std::string displayRooms(const Hotel &h,bool show) {
     std::string ret;

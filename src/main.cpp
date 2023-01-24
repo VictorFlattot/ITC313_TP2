@@ -40,22 +40,6 @@ void findClient(const std::vector<Client> &clients) {
 	}
 }
 
-std::tuple<Date, int> chooseLengthOfStay() {
-	Date dateBegin;
-	std::string strDateBegin = ""
-	int nbNight = 1;
-	std::cout 	<< "=======================================\n"
-	            << "\t\tLenght of stay\n"
-	            << "=======================================\n"
-	            << "Please enter the following informations\n"
-	            << "Date reservation (yyyy-mm-dd): ";
-	do{
-
-	}while(isStrDateValid())
-	td::cin >> strDateBegin(strDateBegin);
-	std::cout << "Name : ";
-	std::cin >> nameNewClient;
-}
 
 /**
  * @brief      Determines whether the specified string date is matching this
@@ -67,7 +51,7 @@ std::tuple<Date, int> chooseLengthOfStay() {
  */
 bool isStrDateValid(const std::string strDate) {
 	std::regex self_regex("(^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01]))");
-	return std::regex_search(str, self_regex);
+	return std::regex_search(strDate, self_regex);
 }
 
 int main(int argc, char const *argv[])
@@ -98,6 +82,11 @@ int main(int argc, char const *argv[])
 	// for (auto it = clients.begin(); it != clients.end(); ++it){
 	// 	std::cout << *it;
 	// };
-	findClient(clients);
+	// findClient(clients);
+	std::cout << std::boolalpha;
+	for(Chambre c : hotel.getRooms(Type::Suite)){
+		std::cout << c << std::endl;	
+	}
+	
 	return 0;
 }

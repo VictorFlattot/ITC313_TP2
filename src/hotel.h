@@ -19,6 +19,7 @@ public:
 	std::string getName() const;
 	std::string getCity() const;
 	std::vector<Chambre> getRooms() const;
+	std::vector<Chambre> getRooms(const Type& type) const;
 
 	void setId(std::string id);
 	void setName(std::string name);
@@ -29,6 +30,7 @@ public:
 	bool removeRoom(Chambre room);
 
 };
+
 
 std::string displayRooms(bool show = true);
 bool isHotelValid(std::string id);

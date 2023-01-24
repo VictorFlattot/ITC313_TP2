@@ -1,11 +1,15 @@
 #include "chambre.h"
 
-Chambre::Chambre(std::string number, Type type, float pricePerNight) : _number(number), _type(type), _pricePerNight(pricePerNight) {};
+Chambre::Chambre(std::string number, Type type, float pricePerNight) : 
+_number(number), _type(type), _pricePerNight(pricePerNight) {};
 
 std::string Chambre::getNumber() const {return _number;};
 Type Chambre::getType() const {return _type;};
 float Chambre::getPricePerNight() const {return _pricePerNight;};
 
+void Chambre::setNumber(std::string number) {_number = number;}
+void Chambre::setType(Type type) {_type = type;}
+void Chambre::setPricePerNight(float price) { _pricePerNight = price; }
 bool Chambre::operator == (const Chambre& c) const { // check for equality
     if ((_number == c.getNumber()) && (_type == c.getType()) && (_pricePerNight== c.getPricePerNight())) {
         return true;
