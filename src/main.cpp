@@ -23,7 +23,13 @@ bool isStrDateValid(const std::string& strDate) {
     return std::regex_search(strDate, self_regex);
 }
 
-std::tuple<Date, int> chooseLengthOfStay(bool show = false) {
+/**
+ * @brief      Choose the lenght of the stay
+ *
+ * @return     A std::tuple<Date, int> where "Date" represent the start date of the stay 
+ *             and "int" the number of night
+ */
+std::tuple<Date, int> chooseLengthOfStay() {
     ;
     std::string strDateBegin;
     int nbNight = 1;
@@ -66,6 +72,17 @@ std::tuple<Date, int> chooseLengthOfStay(bool show = false) {
     return std::make_tuple(dateBegin, nbNight);
 }
 
+/**
+ * @brief      Gets the rooms available by type and dates.
+ *
+ * @param[in]  hotel                 The hotel
+ * @param[in]  reservations          The reservations
+ * @param[in]  dateDebutReservation  The date debut reservation
+ * @param[in]  dateFinReservation    The date fin reservation
+ * @param[in]  type                  The type
+ *
+ * @return     The rooms available by type and dates.
+ */
 std::vector<Room> getRoomsAvailableByTypeAndDate(const Hotel &hotel,
                                                  const std::vector<Reservation> &reservations,
                                                  const Date &dateDebutReservation,
@@ -95,6 +112,16 @@ std::vector<Room> getRoomsAvailableByTypeAndDate(const Hotel &hotel,
     return roomsAvailable;
 }
 
+/**
+ * @brief      Gets the rooms available by type and lenght of the stay.
+ *
+ * @param[in]  hotel         The hotel
+ * @param[in]  reservations  The reservations
+ * @param[in]  type          The type
+ * @param[in]  lengthOfStay  The length of stay
+ *
+ * @return     The rooms available by type and lenght of the stay.
+ */
 std::vector<Room> getRoomsAvailableByTypeAndDate(const Hotel &hotel,
                                                  const std::vector<Reservation> &reservations,
                                                  const Type &type,
@@ -106,6 +133,17 @@ std::vector<Room> getRoomsAvailableByTypeAndDate(const Hotel &hotel,
                                           type);
 }
 
+/**
+ * @brief      Gets the first available room for a type and a period.
+ *
+ * @param[in]  hotel         The hotel
+ * @param[in]  reservations  The reservations
+ * @param[in]  type          The type
+ * @param[in]  lengthOfStay  The length of stay
+ * @param[in]  show          The show
+ *
+ * @return     The first available room for a type and a period.
+ */
 Room * GetFirstAvailableRoomForATypeAndAPeriod(const Hotel &hotel,
                                                const std::vector<Reservation> &reservations,
                                                Type type,
@@ -143,7 +181,7 @@ Room * GetFirstAvailableRoomForATypeAndAPeriod(const Hotel &hotel,
     }
 
     if (lengthOfStay == std::make_tuple(Date(1,1,1), 0))
-        lengthOfStay = chooseLengthOfStay(show);
+        lengthOfStay = chooseLengthOfStay();
 
     auto roomsAvailable = getRoomsAvailableByTypeAndDate(hotel,reservations,
                                                          type, lengthOfStay);
@@ -156,6 +194,19 @@ Room * GetFirstAvailableRoomForATypeAndAPeriod(const Hotel &hotel,
 
 }
 
+/**
+ * @brief      Creates a reservation.
+ *
+ * @param[in]  hotel         The hotel
+ * @param[in]  reservations  The reservations
+ * @param[in]  clients       The clients
+ * @param[in]  surname       The surname
+ * @param[in]  lengthOfStay  The length of stay
+ * @param[in]  type          The type
+ * @param[in]  show          The show
+ *
+ * @return     a pointer to a new reservation
+ */
 Reservation * createReservation(const Hotel &hotel,
                                 const std::vector<Reservation> &reservations,
                                 const std::vector<Client> &clients,
@@ -200,6 +251,16 @@ Reservation * createReservation(const Hotel &hotel,
     return reservation;
 }
 
+/**
+ * @brief      Display the list of reservations for a specified Client by its name or id
+ *
+ * @param[in]  reservations    The reservations
+ * @param[in]  clients         The clients
+ * @param[in]  nameOrIdClient  The name or identifier client
+ * @param[in]  show            The show
+ *
+ * @return     a string represent the list of reservations for a specified Client by its name or id
+ */ 
 std::string displayReservations(const std::vector<Reservation> &reservations,const std::vector<Client> &clients,
                                 const std::string& nameOrIdClient, bool show = false) {
     std::string ret;
@@ -223,10 +284,6 @@ std::string displayReservations(const std::vector<Reservation> &reservations,con
     if (show) std::cout << ret << std::endl;
     return ret;
 }
-
-
-
-
 
 int main(int argc, char const *argv[])
 {

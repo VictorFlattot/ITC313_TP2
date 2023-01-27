@@ -14,7 +14,7 @@ private:
 
 public:
     /**
-     * @brief      Constructs a new instance of hotel.
+     * @brief      Constructs a new instance.
      *
      * @param[in]  id     The identifier
      * @param[in]  name   The name
@@ -112,13 +112,36 @@ public:
  */
 std::string displayRooms(const Hotel &h,bool show);
 
+/**
+ * @brief      Determines if hotel is valid.
+ *
+ * @param[in]  id    The identifier
+ * @param[in]  name  The name
+ * @param[in]  city  The city
+ *
+ * @return     True if hotel is valid, False otherwise.
+ */
 bool isHotelValid(const std::string& id,
                   const std::string& name,
                   const std::string& city);
+/**
+ * @brief      Determines whether the specified hotel h is valid.
+ *
+ * @param[in]  h 	The hotel
+ *
+ * @return     True if the specified h is hotel valid, False otherwise.
+ */
 bool isHotelValid(const Hotel& h);
 
 
-std::string to_string(const Hotel &c);
+/**
+ * @brief      Get a string description of the Hotel h
+ *
+ * @param[in]  h The hotel
+ *
+ * @return     a string description of the Hotel h
+ */
+std::string to_string(const Hotel &h);
 /**
  * @brief      Bitwise left shift operator.
  *

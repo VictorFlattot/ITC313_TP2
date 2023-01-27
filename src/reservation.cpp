@@ -13,6 +13,9 @@ Reservation::Reservation(Date dateBegin, std::string idHotel,
         _idRoom(std::move(idRoom)),	_idClient(std::move(idClient)),
         _nbNight(nbNight), _pricePerNight(pricePerNight) {
     generateId();
+    assert(isReservationValid(_dateBegin, _idHotel,_idRoom,
+                              _idClient,_nbNight,_pricePerNight)
+                              && "Reservation is not valid");
 };
 
 std::string Reservation::getId() const {return _id;};
@@ -58,6 +61,17 @@ std::string to_string(const Reservation &r) {
            "Price per night : " + std::to_string(r.getPricePerNight()) + "\n" +
            "Price Total : " + std::to_string(r.getPriceTotal()) + "\n";
 };
+
+bool isReservationValid(Date dateBegin, const std::string& idHotel, const std::string& idRoom, const std::string& idHClient, int nbNight,
+                        float priceTotal) {
+    if (idHotel.empty() || idRoom.empty() || idHClient.empty()
+        || nbNight <= 0 || priceTotal < 0) return false;
+    return true;
+}
+
+bool isReservationValid(const Reservation &r) {
+    return isReservationValid(r.getDateBegin(), r.getIdHotel(), r.getIdRoom(), r.getIdClient(), r.getNbNight(), r.getPriceTotal());
+}
 
 Reservation findReservation(const std::vector<Reservation> &reservations,const std::string& id) {
     return *std::find_if(reservations.begin(),reservations.end(),

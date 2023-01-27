@@ -19,14 +19,14 @@ bool Room::operator == (const Room& c) const { // check for equality
     return false;
 }
 
-std::string to_string(const Room &c) {
-	return "Number : " + c.getNumber() + "\n" +
-	       "Type : " + language_str[c.getType()] + "\n" +
-	       "Price per night: " + std::to_string(c.getPricePerNight()) + " EUR";
+std::string to_string(const Room &r) {
+	return "Number : " + r.getNumber() + "\n" +
+	       "Type : " + language_str[r.getType()] + "\n" +
+	       "Price per night: " + std::to_string(r.getPricePerNight()) + " EUR";
 
 };
 
-std::ostream &operator<<(std::ostream &os, const Room &chambre){
-	os << to_string(chambre) << std::endl;
+std::ostream &operator<<(std::ostream &os, const Room &room){
+	os << to_string(room) << std::endl;
     return os;
 };
