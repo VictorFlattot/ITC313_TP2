@@ -134,7 +134,7 @@ public:
      *
      * @return     The result of the subtraction
      */
-    Date operator - (int days) const; /
+    Date operator - (int days) const;
 
     /**
      * @brief      Prefix increment operator: ++date.

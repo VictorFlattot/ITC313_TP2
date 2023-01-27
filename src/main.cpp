@@ -222,7 +222,7 @@ Reservation * createReservation(const Hotel &hotel,
     }
     Client client = findClient(clients,surname,show);
     if (std::get<0>(lengthOfStay) == Date(1,1,1) && std::get<1>(lengthOfStay) == 0){
-        lengthOfStay = chooseLengthOfStay(show);
+        lengthOfStay = chooseLengthOfStay();
     }
     Date date = std::get<0>(lengthOfStay);
     int nbNight = std::get<1>(lengthOfStay);

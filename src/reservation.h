@@ -13,7 +13,6 @@ private:
 	std::string _idRoom;
 	std::string _idClient;
 	int _nbNight;
-	float _priceTotal{};
 	float _pricePerNight;
 public:
 	Reservation(Date dateBegin, std::string idHotel, std::string idRoom,
