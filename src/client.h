@@ -23,8 +23,14 @@ class Client{
 		void setSurname(std::string surname);
 
 };
+/**
+ * @brief      Find a client. Display information if found, create a new if not
+ *
+ * @param[in]  clients  The clients
+ */
+Client findClient(const std::vector<Client> &clients, std::string surname = "",bool show = false);
 
-bool isClientValid(std::string id, std::string name, std::string surname);
+bool isClientValid(const std::string& id, const std::string& name, const std::string& surname);
 bool isClientValid(const Client& c);
 
 std::string to_string(const Client &c);
